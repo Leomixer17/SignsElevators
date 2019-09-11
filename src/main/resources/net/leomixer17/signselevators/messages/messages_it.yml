@@ -1,0 +1,4 @@
+prefix: '&7[&b&lAscensore&r&7] '
+no_elevator_sign_found: '&aNessun ascensore trovato.'
+destination_obstructed: '&4La destinazione è ostruita.'
+destination_unsafe: '&4La destinazione non è sicura.'

@@ -1,0 +1,4 @@
+prefix: '&7[&b&lElevator&r&7] '
+no_elevator_sign_found: '&aNo elevator sign found.'
+destination_obstructed: '&4The destination is obstructed.'
+destination_unsafe: '&4The destination is not safe.'

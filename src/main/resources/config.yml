@@ -1,0 +1,4 @@
+language: en
+sign_line_up: [Lift Up]
+sign_line_down: [Lift Down]
+send_messages_in_action_bar: true
