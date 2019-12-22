@@ -1,6 +1,6 @@
-package net.leomixer17.signselevators.config;
+package net.leonardo_dgs.signselevators.config;
 
-import net.leomixer17.signselevators.SignsElevators;
+import net.leonardo_dgs.signselevators.SignsElevators;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -27,8 +27,8 @@ public final class Messages {
 
     static void reload()
     {
-        String langCode = (SignsElevators.getPlugin().getResource(langLocation + "messages_" + Settings.LANGUAGE + ".yml") == null) ? "en" : Settings.LANGUAGE;
-        final File f = new File(SignsElevators.getPlugin().getDataFolder(), "messages_" + langCode + ".yml");
+        String langCode = (SignsElevators.getInstance().getResource(langLocation + "messages_" + Settings.LANGUAGE + ".yml") == null) ? "en" : Settings.LANGUAGE;
+        final File f = new File(SignsElevators.getInstance().getDataFolder(), "messages_" + langCode + ".yml");
         if (!f.exists())
             try
             {
@@ -39,7 +39,7 @@ public final class Messages {
             {
                 e.printStackTrace();
             }
-        messages = Settings.loadDefaults(YamlConfiguration.loadConfiguration(f), YamlConfiguration.loadConfiguration(new InputStreamReader(Objects.requireNonNull(SignsElevators.getPlugin().getResource(langLocation + "messages_" + langCode + ".yml")))));
+        messages = Settings.loadDefaults(YamlConfiguration.loadConfiguration(f), YamlConfiguration.loadConfiguration(new InputStreamReader(Objects.requireNonNull(SignsElevators.getInstance().getResource(langLocation + "messages_" + langCode + ".yml")))));
         try
         {
             messages.save(f);

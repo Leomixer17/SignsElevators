@@ -1,8 +1,8 @@
-package net.leomixer17.signselevators;
+package net.leonardo_dgs.signselevators;
 
-import net.leomixer17.pluginlib.util.Players;
-import net.leomixer17.signselevators.config.Messages;
-import net.leomixer17.signselevators.config.Settings;
+import me.lucko.helper.utils.Players;
+import net.leonardo_dgs.signselevators.config.Messages;
+import net.leonardo_dgs.signselevators.config.Settings;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

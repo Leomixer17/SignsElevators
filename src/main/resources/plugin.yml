@@ -1,6 +1,7 @@
-name: SignsElevators
-main: net.leomixer17.signselevators.SignsElevators
+name: @name@
+main: @mainPackage@.@name@
 version: @version@
-api-version: 1.14
+api-version: @apiVersion@
 description: @description@
-author: Leomixer17
+author: @author@
+website: @website@

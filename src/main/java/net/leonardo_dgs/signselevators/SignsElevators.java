@@ -1,6 +1,7 @@
-package net.leomixer17.signselevators;
+package net.leonardo_dgs.signselevators;
 
-import net.leomixer17.signselevators.config.Settings;
+import lombok.Getter;
+import net.leonardo_dgs.signselevators.config.Settings;
 import org.bstats.bukkit.MetricsLite;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,12 +9,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SignsElevators extends JavaPlugin {
 
-    private static SignsElevators plugin;
+    @Getter
+    private static SignsElevators instance;
 
     @Override
     public void onEnable()
     {
-        plugin = this;
+        instance = this;
         Settings.reload();
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         new MetricsLite(this);
@@ -25,14 +27,9 @@ public final class SignsElevators extends JavaPlugin {
 
     }
 
-    public static SignsElevators getPlugin()
-    {
-        return plugin;
-    }
-
     public static FileConfiguration getSettings()
     {
-        return getPlugin().getConfig();
+        return getInstance().getConfig();
     }
 
 }

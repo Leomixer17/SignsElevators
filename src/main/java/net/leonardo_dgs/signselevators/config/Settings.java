@@ -1,6 +1,6 @@
-package net.leomixer17.signselevators.config;
+package net.leonardo_dgs.signselevators.config;
 
-import net.leomixer17.signselevators.SignsElevators;
+import net.leonardo_dgs.signselevators.SignsElevators;
 import org.bukkit.Material;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -22,7 +22,7 @@ public final class Settings {
 
     public static void reload()
     {
-        SignsElevators.getPlugin().saveDefaultConfig();
+        SignsElevators.getInstance().saveDefaultConfig();
         loadSettings();
         Messages.reload();
     }
