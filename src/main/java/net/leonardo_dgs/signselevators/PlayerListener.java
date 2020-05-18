@@ -1,8 +1,8 @@
 package net.leonardo_dgs.signselevators;
 
-import me.lucko.helper.utils.Players;
 import net.leonardo_dgs.signselevators.config.Messages;
 import net.leonardo_dgs.signselevators.config.Settings;
+import net.leonardo_dgs.signselevators.util.PlayerUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -32,7 +32,7 @@ public final class PlayerListener implements Listener {
         if (destinationSignLocation == null)
         {
             if (Settings.SENDMESSAGESINACTIONBAR)
-                Players.sendActionBar(Messages.PREFIX + Messages.NOELEVATORSIGNFOUND, event.getPlayer());
+                PlayerUtil.sendActionBar(Messages.PREFIX + Messages.NOELEVATORSIGNFOUND, event.getPlayer());
             else
                 event.getPlayer().sendMessage(Messages.PREFIX + Messages.NOELEVATORSIGNFOUND);
             return;
@@ -42,7 +42,7 @@ public final class PlayerListener implements Listener {
         if (isObstructed(destinationLocation))
         {
             if (Settings.SENDMESSAGESINACTIONBAR)
-                Players.sendActionBar(Messages.PREFIX + Messages.DESTINATIONOBSTRUCTED, event.getPlayer());
+                PlayerUtil.sendActionBar(Messages.PREFIX + Messages.DESTINATIONOBSTRUCTED, event.getPlayer());
             else
                 event.getPlayer().sendMessage(Messages.PREFIX + Messages.DESTINATIONOBSTRUCTED);
             return;
@@ -50,7 +50,7 @@ public final class PlayerListener implements Listener {
         if (!isSafe(destinationLocation))
         {
             if (Settings.SENDMESSAGESINACTIONBAR)
-                Players.sendActionBar(Messages.PREFIX + Messages.DESTINATIONUNSAFE, event.getPlayer());
+                PlayerUtil.sendActionBar(Messages.PREFIX + Messages.DESTINATIONUNSAFE, event.getPlayer());
             else
                 event.getPlayer().sendMessage(Messages.PREFIX + Messages.DESTINATIONUNSAFE);
             return;
@@ -61,7 +61,7 @@ public final class PlayerListener implements Listener {
         if (destinationSign.getLine(0).isEmpty())
             return;
         if (Settings.SENDMESSAGESINACTIONBAR)
-            Players.sendActionBar(Messages.PREFIX + destinationSign.getLine(0), event.getPlayer());
+            PlayerUtil.sendActionBar(Messages.PREFIX + destinationSign.getLine(0), event.getPlayer());
         else
             event.getPlayer().sendMessage(Messages.PREFIX + destinationSign.getLine(0));
     }
