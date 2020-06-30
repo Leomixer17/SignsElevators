@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class Messages {
 
     private static FileConfiguration messages;
-    private static final String langLocation = "net/leomixer17/signselevators/messages/";
+    private static final String langLocation = "net/leonardo_dgs/signselevators/messages/";
 
     public static String PREFIX;
     public static String NOELEVATORSIGNFOUND;
