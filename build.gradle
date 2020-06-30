@@ -14,8 +14,8 @@ String apiVersion = '1.13'
 String author = 'Leonardo_DGS'
 String website = 'https://www.spigotmc.org/resources/71207/'
 
-String spigotVersion = '1.15.2-R0.1-SNAPSHOT'
-String bungeeVersion = '1.15-SNAPSHOT'
+String spigotVersion = '1.16.1-R0.1-SNAPSHOT'
+String bungeeVersion = '1.16-SNAPSHOT'
 String lombokVersion = '1.18.12'
 String bStatsVersion = '1.5'
 String helperVersion = '5.6.2'
@@ -28,7 +28,6 @@ repositories {
     jcenter()
 
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
-    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url = 'https://repo.codemc.org/repository/maven-public/' }
 }
 
