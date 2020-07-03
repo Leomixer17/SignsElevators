@@ -20,15 +20,13 @@ public final class Settings {
     public static Set<Material> VOIDBLOCKS;
     public static Set<Material> FLOORSAFEBLOCKS;
 
-    public static void reload()
-    {
+    public static void reload() {
         SignsElevators.getInstance().saveDefaultConfig();
         loadSettings();
         Messages.reload();
     }
 
-    static YamlConfiguration loadDefaults(Configuration conf, Configuration defconf)
-    {
+    static YamlConfiguration loadDefaults(Configuration conf, Configuration defconf) {
         final YamlConfiguration finalConfig = new YamlConfiguration();
         for (final String s : defconf.getKeys(true))
             if (conf.get(s) != null)
@@ -43,8 +41,7 @@ public final class Settings {
         return finalConfig;
     }
 
-    private static void loadSettings()
-    {
+    private static void loadSettings() {
         LANGUAGE = SignsElevators.getSettings().getString("language");
         SIGNLINEUP = SignsElevators.getSettings().getString("sign_line_up");
         SIGNLINEDOWN = SignsElevators.getSettings().getString("sign_line_down");
@@ -54,8 +51,7 @@ public final class Settings {
         FLOORSAFEBLOCKS = getFloorSafeBlocks();
     }
 
-    private static Set<Material> getUnsafeBlocks()
-    {
+    private static Set<Material> getUnsafeBlocks() {
         Set<Material> blocks = new HashSet<>(getVoidBlocks());
         blocks.add(CACTUS);
         blocks.add(COBWEB);
@@ -64,8 +60,7 @@ public final class Settings {
         return blocks;
     }
 
-    private static Set<Material> getFloorSafeBlocks()
-    {
+    private static Set<Material> getFloorSafeBlocks() {
         Set<Material> blocks = new HashSet<>();
         blocks.add(BLACK_CARPET);
         blocks.add(BLUE_CARPET);
@@ -74,8 +69,7 @@ public final class Settings {
         return blocks;
     }
 
-    private static Set<Material> getVoidBlocks()
-    {
+    private static Set<Material> getVoidBlocks() {
         Set<Material> blocks = new HashSet<>();
         blocks.add(ACACIA_BUTTON);
         blocks.add(ACACIA_DOOR);

@@ -20,39 +20,30 @@ public final class Messages {
     public static String DESTINATIONOBSTRUCTED;
     public static String DESTINATIONUNSAFE;
 
-    private static String getMsg(String key)
-    {
+    private static String getMsg(String key) {
         return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(messages.getString(key)));
     }
 
-    static void reload()
-    {
+    static void reload() {
         String langCode = (SignsElevators.getInstance().getResource(langLocation + "messages_" + Settings.LANGUAGE + ".yml") == null) ? "en" : Settings.LANGUAGE;
         final File f = new File(SignsElevators.getInstance().getDataFolder(), "messages_" + langCode + ".yml");
         if (!f.exists())
-            try
-            {
+            try {
                 if (!f.createNewFile())
                     throw new IOException();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         messages = Settings.loadDefaults(YamlConfiguration.loadConfiguration(f), YamlConfiguration.loadConfiguration(new InputStreamReader(Objects.requireNonNull(SignsElevators.getInstance().getResource(langLocation + "messages_" + langCode + ".yml")))));
-        try
-        {
+        try {
             messages.save(f);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         loadMessages();
     }
 
-    private static void loadMessages()
-    {
+    private static void loadMessages() {
         PREFIX = getMsg("prefix");
         NOELEVATORSIGNFOUND = getMsg("no_elevator_sign_found");
         DESTINATIONOBSTRUCTED = getMsg("destination_obstructed");

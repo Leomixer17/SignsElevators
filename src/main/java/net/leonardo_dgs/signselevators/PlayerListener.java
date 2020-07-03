@@ -18,8 +18,7 @@ import java.util.Objects;
 public final class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onPlayerInteract(PlayerInteractEvent event)
-    {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK))
             return;
         if (!isSign(Objects.requireNonNull(event.getClickedBlock())))
@@ -29,8 +28,7 @@ public final class PlayerListener implements Listener {
 
         Sign sign = (Sign) event.getClickedBlock().getState();
         Location destinationSignLocation = findDestination(event.getClickedBlock().getLocation(), sign.getLine(1).equalsIgnoreCase(Settings.SIGNLINEUP));
-        if (destinationSignLocation == null)
-        {
+        if (destinationSignLocation == null) {
             if (Settings.SENDMESSAGESINACTIONBAR)
                 PlayerUtil.sendActionBar(Messages.PREFIX + Messages.NOELEVATORSIGNFOUND, event.getPlayer());
             else
@@ -39,16 +37,14 @@ public final class PlayerListener implements Listener {
         }
         Location destinationLocation = event.getPlayer().getLocation();
         destinationLocation.setY(destinationSignLocation.getY() + (event.getPlayer().getLocation().getY() - sign.getLocation().getY()));
-        if (isObstructed(destinationLocation))
-        {
+        if (isObstructed(destinationLocation)) {
             if (Settings.SENDMESSAGESINACTIONBAR)
                 PlayerUtil.sendActionBar(Messages.PREFIX + Messages.DESTINATIONOBSTRUCTED, event.getPlayer());
             else
                 event.getPlayer().sendMessage(Messages.PREFIX + Messages.DESTINATIONOBSTRUCTED);
             return;
         }
-        if (!isSafe(destinationLocation))
-        {
+        if (!isSafe(destinationLocation)) {
             if (Settings.SENDMESSAGESINACTIONBAR)
                 PlayerUtil.sendActionBar(Messages.PREFIX + Messages.DESTINATIONUNSAFE, event.getPlayer());
             else
@@ -66,8 +62,7 @@ public final class PlayerListener implements Listener {
             event.getPlayer().sendMessage(Messages.PREFIX + destinationSign.getLine(0));
     }
 
-    private static boolean isSign(Block block)
-    {
+    private static boolean isSign(Block block) {
         Material type = block.getType();
         return type.equals(Material.ACACIA_SIGN) || type.equals(Material.ACACIA_WALL_SIGN) ||
                 type.equals(Material.BIRCH_SIGN) || type.equals(Material.BIRCH_WALL_SIGN) ||
@@ -77,25 +72,21 @@ public final class PlayerListener implements Listener {
                 type.equals(Material.SPRUCE_SIGN) || type.equals(Material.SPRUCE_WALL_SIGN);
     }
 
-    private static boolean isElevatorSign(Sign sign)
-    {
+    private static boolean isElevatorSign(Sign sign) {
         String line = sign.getLine(1);
         return line.equalsIgnoreCase(Settings.SIGNLINEUP) || line.equalsIgnoreCase(Settings.SIGNLINEDOWN);
     }
 
-    private static Location findDestination(Location location, boolean up)
-    {
+    private static Location findDestination(Location location, boolean up) {
         if (up)
-            for (int i = location.getBlockY() + 1; i <= 256; i++)
-            {
+            for (int i = location.getBlockY() + 1; i <= 256; i++) {
                 location.setY(i);
                 Block block = location.getBlock();
                 if (isSign(block) && isElevatorSign((Sign) block.getState()))
                     return location;
             }
         else
-            for (int i = location.getBlockY() - 1; i >= 0; i--)
-            {
+            for (int i = location.getBlockY() - 1; i >= 0; i--) {
                 location.setY(i);
                 Block block = location.getBlock();
                 if (isSign(block) && isElevatorSign((Sign) block.getState()))
@@ -104,15 +95,13 @@ public final class PlayerListener implements Listener {
         return null;
     }
 
-    private static boolean isObstructed(Location loc)
-    {
+    private static boolean isObstructed(Location loc) {
         Location above = loc.clone();
         above.setY(loc.getBlockY() + 1);
         return !Settings.VOIDBLOCKS.contains(loc.getBlock().getType()) || !Settings.VOIDBLOCKS.contains(above.getBlock().getType());
     }
 
-    private static boolean isSafe(Location loc)
-    {
+    private static boolean isSafe(Location loc) {
         Location above = loc.clone();
         above.setY(loc.getY() + 1);
         Location below = loc.clone();

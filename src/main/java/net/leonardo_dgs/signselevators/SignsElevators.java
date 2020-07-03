@@ -13,8 +13,7 @@ public final class SignsElevators extends JavaPlugin {
     private static SignsElevators instance;
 
     @Override
-    public void onEnable()
-    {
+    public void onEnable() {
         instance = this;
         Settings.reload();
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
@@ -22,13 +21,11 @@ public final class SignsElevators extends JavaPlugin {
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
 
     }
 
-    public static FileConfiguration getSettings()
-    {
+    public static FileConfiguration getSettings() {
         return getInstance().getConfig();
     }
 
