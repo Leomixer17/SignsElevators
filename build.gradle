@@ -15,7 +15,7 @@ String author = 'Leonardo_DGS'
 String website = 'https://www.spigotmc.org/resources/71207/'
 
 String spigotVersion = '1.16.4-R0.1-SNAPSHOT'
-String bungeeVersion = '1.16-R0.1'
+String bungeeVersion = '1.16-R0.3'
 String lombokVersion = '1.18.16'
 String bStatsVersion = '1.7'
 
