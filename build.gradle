@@ -2,7 +2,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group = 'net.leonardo_dgs'
@@ -14,10 +14,10 @@ String apiVersion = '1.13'
 String author = 'Leonardo_DGS'
 String website = 'https://www.spigotmc.org/resources/71207/'
 
-String spigotVersion = '1.16.1-R0.1-SNAPSHOT'
+String spigotVersion = '1.16.4-R0.1-SNAPSHOT'
 String bungeeVersion = '1.16-R0.1'
-String lombokVersion = '1.18.12'
-String bStatsVersion = '1.5'
+String lombokVersion = '1.18.16'
+String bStatsVersion = '1.7'
 
 tasks.compileJava.sourceCompatibility = 1.8
 tasks.compileJava.targetCompatibility = 1.8

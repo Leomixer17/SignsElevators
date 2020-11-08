@@ -17,7 +17,7 @@ public final class SignsElevators extends JavaPlugin {
         instance = this;
         Settings.reload();
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
-        new MetricsLite(this);
+        new MetricsLite(this, 5586);
     }
 
     @Override
