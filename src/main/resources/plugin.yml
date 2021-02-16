@@ -1,7 +1,7 @@
-name: @name@
-main: @mainPackage@.@name@
-version: @version@
-api-version: @apiVersion@
-description: @description@
-author: @author@
-website: @website@
+name: SignsElevators
+main: net.leonardo_dgs.signselevators.SignsElevators
+version: ${version}
+api-version: 1.13
+description: ${description}
+author: ${author}
+website: ${website}

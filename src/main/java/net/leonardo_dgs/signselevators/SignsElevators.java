@@ -2,7 +2,7 @@ package net.leonardo_dgs.signselevators;
 
 import lombok.Getter;
 import net.leonardo_dgs.signselevators.config.Settings;
-import org.bstats.bukkit.MetricsLite;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,7 +17,7 @@ public final class SignsElevators extends JavaPlugin {
         instance = this;
         Settings.reload();
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
-        new MetricsLite(this, 5586);
+        new Metrics(this, 5586);
     }
 
     @Override
