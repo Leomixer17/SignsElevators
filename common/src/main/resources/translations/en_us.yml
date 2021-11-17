@@ -1,0 +1,5 @@
+prefix: '<gray>[<aqua><b>Elevator<r><gray>]<r>'
+no_elevator_found: '<prefix> <red>No elevator found.'
+destination_obstructed: '<prefix> <red>The destination is obstructed.'
+destination_unsafe: '<prefix> <red>The destination is not safe.'
+elevator_used: '<prefix> <green><destination_elevator_name>'

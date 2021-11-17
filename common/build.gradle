@@ -1,0 +1,12 @@
+repositories {
+
+}
+
+dependencies {
+    implementation 'net.kyori:adventure-text-minimessage:4.2.0-SNAPSHOT'
+    implementation 'com.github.Simplix-Softworks:SimplixStorage:3.2.4'
+}
+
+shadowJar {
+    relocate 'de.leonhard.storage', 'net.leonardo_dgs.signselevators.lib.simplixstorage'
+}

@@ -1,5 +1,5 @@
 name: SignsElevators
-main: net.leonardo_dgs.signselevators.SignsElevators
+main: net.leonardo_dgs.signselevators.bukkit.BukkitSignsElevatorsPlugin
 version: ${version}
 api-version: 1.13
 description: ${description}

@@ -1,1 +1,3 @@
 rootProject.name = 'SignsElevators'
+include 'common'
+include 'bukkit'
