@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'com.github.johnrengelman.shadow'
     group 'net.leonardo_dgs'
-    version '1.1.0'
+    version '1.2.0-SNAPSHOT'
     description 'Create lifts with signs!'
 
     repositories {
