@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
+import org.bukkit.block.sign.Side;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -21,6 +22,17 @@ public class BukkitListener implements Listener {
     private final SettingsManager settings;
     private final TranslationsManager translations;
     private final BukkitAudiences adventure;
+
+    private static boolean SIGN_SIDE_SUPPORT;
+
+    static {
+        try {
+            Class.forName("org.bukkit.block.sign.SignSide");
+            SIGN_SIDE_SUPPORT = true;
+        } catch (ClassNotFoundException e) {
+            SIGN_SIDE_SUPPORT = false;
+        }
+    }
 
     public BukkitListener(SignsElevators instance, BukkitAudiences adventure) {
         settings = instance.getSettingsManager();
@@ -45,7 +57,7 @@ public class BukkitListener implements Listener {
         Location location = event.getClickedBlock().getLocation();
         boolean sendMessagesInActionbar = settings.getSendMessagesInActionbar();
 
-        boolean up = sign.getLine(1).equalsIgnoreCase(settings.getSignElevatorUp());
+        boolean up = getSignLine(sign, 1).equalsIgnoreCase(settings.getSignElevatorUp());
         Location destinationSignLocation = up ? findDestinationUp(location) : findDestinationDown(location);
         if (destinationSignLocation == null) {
             Component message = translations.getNoElevatorSignFound(player.getLocale(), "prefix", translations.getPrefix(player.getLocale()));
@@ -77,12 +89,13 @@ public class BukkitListener implements Listener {
         }
 
         Sign destinationSign = (Sign) destinationSignLocation.getBlock().getState();
+        String destinationSignFirstLine = getSignLine(destinationSign, 0);
         player.teleport(destinationLocation);
-        if (!destinationSign.getLine(0).isEmpty()) {
+        if (!destinationSignFirstLine.isEmpty()) {
             Component message = translations.getElevatorSuccess(player.getLocale(),
                     "prefix", translations.getPrefix(player.getLocale()),
-                    "destination_elevator_name", destinationSign.getLine(0),
-                    "elevator_name", sign.getLine(0));
+                    "destination_elevator_name", destinationSignFirstLine,
+                    "elevator_name", getSignLine(sign, 0));
             if (sendMessagesInActionbar)
                 playerAudience.sendActionBar(message);
             else
@@ -90,8 +103,16 @@ public class BukkitListener implements Listener {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    private String getSignLine(Sign sign, int line) {
+        if (SIGN_SIDE_SUPPORT)
+            return sign.getSide(Side.FRONT).getLine(line);
+        else
+            return sign.getLine(line);
+    }
+
     private boolean isElevatorSign(Sign sign) {
-        String line = sign.getLine(1);
+        String line = getSignLine(sign, 1);
         return line.equalsIgnoreCase(settings.getSignElevatorUp()) || line.equalsIgnoreCase(settings.getSignElevatorDown());
     }
 
